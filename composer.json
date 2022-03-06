@@ -3,7 +3,7 @@
     "autoload": {
         "psr-4": {
             "Yuya\\PhpYlib\\": "src/",
-            "YuyaLib":"src/common/"
+            "YuyaLibs\\":"src/common/"
         }
     },
     "authors": [
