@@ -1,6 +1,6 @@
 <?php
 
-namespace Disp;
+namespace Yuya\PhpYlib;
 
 class Disp
 {
