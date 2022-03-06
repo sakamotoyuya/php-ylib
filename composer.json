@@ -1,0 +1,15 @@
+{
+    "name": "yuya/php-ylib",
+    "autoload": {
+        "psr-4": {
+            "Yuya\\PhpYlib\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yuyasakamoto",
+            "email": "freetairu@yahoo.co.jp"
+        }
+    ],
+    "require": {}
+}
