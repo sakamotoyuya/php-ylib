@@ -1,6 +1,6 @@
 <?php
 
-namespace Ylibs;
+namespace YLibs;
 
 class Disp
 {
