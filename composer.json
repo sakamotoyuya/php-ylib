@@ -2,7 +2,8 @@
     "name": "yuya/php-ylib",
     "autoload": {
         "psr-4": {
-            "Yuya\\PhpYlib\\": "src/"
+            "Yuya\\PhpYlib\\": "src/",
+            "YuyaLib":"src/common/"
         }
     },
     "authors": [
