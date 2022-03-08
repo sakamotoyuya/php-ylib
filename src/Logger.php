@@ -49,6 +49,7 @@ class Logger
     {
         // 作成するファイル名の指定
         $dir = './logs/';
+        mkdir($dir, 0777); //ディレクトリを作成する
         $now = date("Ymd_His");
         $file_name = $dir . $now . '_LOG.log';
         // echo $file_name;
