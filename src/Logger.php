@@ -49,7 +49,7 @@ class Logger
     {
         // 作成するファイル名の指定
         $dir = './logs/';
-        $now = date("Ymd_H:i:s");
+        $now = date("Ymd_His");
         $file_name = $dir . $now . '_LOG.log';
         // echo $file_name;
         // $file_name = './logs/file.txt';
