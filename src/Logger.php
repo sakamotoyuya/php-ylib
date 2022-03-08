@@ -6,7 +6,7 @@ use Exception;
 
 class Logger
 {
-    public static function _print($method = "", $variable = "")
+    public static function _print($variable = "", $method = "")
     {
 
         //ログファイルへの書き込み処理
