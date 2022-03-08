@@ -10,9 +10,6 @@ jobs:
         steps:
             - uses: actions/checkout@master
 
-            - name: Add HTTP basic auth credentials
-              run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > ./app/auth.json
-
             - name: composer install
               if: steps.cache.outputs.cache-hit != 'true'
               run: composer install
