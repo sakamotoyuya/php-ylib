@@ -18,7 +18,11 @@
     "scripts": {
         "test":[
             "composer dump-autoload",
-            "vendor/bin/phpunit ./src/Test"
+            "vendor/bin/phpunit --colors=always ./src/Test"
+        ],
+        "test2":[
+            "composer dump-autoload",
+            "vendor/bin/phpunit --colors=always --test-suffix=.php --stop-on-failure --debug ./src/Test"
         ]
     }
     
