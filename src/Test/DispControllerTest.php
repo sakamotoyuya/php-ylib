@@ -8,27 +8,27 @@ use YLibs\DispController;
 
 final class DispControllerTest extends TestCase
 {
-    // private $準備;
+    // private $target;
     //setupメソッドで各テストメソッドが実行される前に毎回実行される
     protected function setUp(): void
     {
-        $this->準備 = new DispController(new Disp);
+        $this->target = new DispController(new Disp);
     }
 
     public function testA()
     {
-        // $準備 = new DispController(new Disp);
+        // $target = new DispController(new Disp);
         $期待値 = "start";
-        $処理結果 = $this->準備->start();
-        $this->assertSame($期待値, $処理結果);
+        $実際の値 = $this->target->start();
+        $this->assertSame($期待値, $実際の値);
     }
 
     public function testB()
     {
-        // $準備 = new DispController(new Disp);
+        // $target = new DispController(new Disp);
 
         $期待値 = "start";
-        $処理結果 = $this->準備->start();
-        $this->assertSame($期待値, $処理結果);
+        $実際の値 = $this->target->start();
+        $this->assertSame($期待値, $実際の値);
     }
 }
