@@ -20,10 +20,10 @@ abstract class Controller
     /**
      * 指定したviewを表示する
      *
-     * @param String $url viewのurl
+     * @param string $url viewのurl
      * @return void
      */
-    public function view(String $url)
+    public function view(string $url)
     {
         if (!file_exists($url)) {
             throw new Exception("存在しないパスです");
@@ -40,8 +40,8 @@ abstract class Controller
     /**
      * viewへ値しするための変数の設定を行う。
      *
-     * @param [String] $name 変数名
-     * @param [mixed] $value 値
+     * @param string $name 変数名
+     * @param mixed $value 値
      * @return void
      */
     public function set(String $name, $value)
