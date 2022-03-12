@@ -16,6 +16,17 @@ abstract class Controller
      * @var array
      */
     private $variables = [];
+    private array $pathParameter = [];
+
+    public function setPathParameter(array $parameter)
+    {
+        $this->pathParameter = $parameter;
+    }
+
+    public function getPathParameter($key)
+    {
+        return $this->pathParameter[$key];
+    }
 
     /**
      * 指定したviewを表示する
