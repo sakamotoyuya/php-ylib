@@ -23,7 +23,18 @@
         "test2":[
             "composer dump-autoload",
             "vendor/bin/phpunit --colors=always --test-suffix=.php --stop-on-failure --debug ./src/Test"
+        ],
+        "test-c":[
+            "echo ^<?php >> ./src/Test/xxxTest.php",
+            "echo namespace YLibs; >> ./src/Test/xxxTest.php",
+            "echo use PHPUnit\\Framework\\TestCase; >> ./src/Test/xxxTest.php",
+            "echo class xxxTest extends TestCase{ >> ./src/Test/xxxTest.php",
+            "echo public function testA^(^){ >> ./src/Test/xxxTest.php",
+            "echo $期待値 = \"\"; >> ./src/Test/xxxTest.php",
+            "echo $実際の値 = \"\"; >> ./src/Test/xxxTest.php",
+            "echo $this-^>assertSame^($実際の値 ,$期待値^); >> ./src/Test/xxxTest.php",
+            "echo } >> ./src/Test/xxxTest.php",
+            "echo } >> ./src/Test/xxxTest.php"
         ]
     }
-    
 }
