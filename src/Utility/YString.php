@@ -2,6 +2,8 @@
 
 namespace YLibs\Utility;
 
+use Exception;
+
 /**
  * 文字列操作クラス
  */
@@ -17,6 +19,9 @@ class YString
      */
     function delEndsWith(string $src, string $target)
     {
+        if (strlen($target) !== 1) {
+            throw new Exception("targetが1文字ではありません。");
+        }
 
         $result = $src;
         if (substr($src, -1) === $target) {
