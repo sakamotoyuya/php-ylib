@@ -5,6 +5,7 @@ namespace YLibs\Test;
 use Exception;
 use PHPUnit\Framework\TestCase;
 use YLibs\Controller;
+use YLibs\View;
 
 final class ControllerTest extends TestCase
 {
@@ -57,7 +58,8 @@ final class ControllerTest extends TestCase
     public function testview_成功()
     {
         try {
-            $this->target->view(__DIR__ . "/ControllerDummy.php");
+            View::setDir(__DIR__);
+            $this->target->view("/ControllerDummy.php");
         } catch (Exception $e) {
             $this->fail('問題ないデータなのに拒絶されている');
         } finally {
@@ -71,7 +73,8 @@ final class ControllerTest extends TestCase
     public function testview_失敗_例外発生()
     {
         try {
-            $this->target->view(__DIR__ . "/こんなファイル存在しない.php");
+            View::setDir(__DIR__);
+            $this->target->view("/こんなファイル存在しない.php");
         } catch (Exception $e) {
             $this->assertSame($e->getMessage(), "存在しないパスです");
         } finally {

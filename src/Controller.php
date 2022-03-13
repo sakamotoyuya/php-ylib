@@ -36,6 +36,7 @@ abstract class Controller
      */
     public function view(string $url)
     {
+        $url = View::getDir() . $url;
         if (!file_exists($url)) {
             throw new Exception("存在しないパスです");
         }
