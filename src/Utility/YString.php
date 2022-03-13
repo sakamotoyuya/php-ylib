@@ -11,13 +11,15 @@ class YString
 {
 
     /**
-     * 文字列の末尾が指定した文字列の場合削除する
+     * 文字列の末尾が指定文字列の場合末尾文字を削除したものを返却する
+     * 指定文字列の場合検索文字列をそのまま返却する
      *
      * @param string $src 検索文字列
      * @param string $target 指定文字列
-     * @return void
+     * @return string
+     * @throws Exception $targetが1文字以外のき
      */
-    function delEndsWith(string $src, string $target)
+    function delEndsWith(string $src, string $target): string
     {
         if (strlen($target) !== 1) {
             throw new Exception("targetが1文字ではありません。");
