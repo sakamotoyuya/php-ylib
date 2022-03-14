@@ -43,23 +43,16 @@ class YString
      */
     function delStartsWith(string $src, string $target): string
     {
-        // echo "<br>★delStartsWidth-1<br>";
         $length = strlen($target);
-        // echo $length;
         if ($length === null) {
             throw new Exception("targetがnullです。");
         }
 
-        // echo "<br>★delStartsWidth-2<br>";
-        // var_dump(substr($src, $length));
         $result = $src;
         if (substr($src, 0, $length) === $target) {
-            // echo "<br>★delStartsWidth-3<br>";
             $result = substr($src, $length);
         }
 
-        // echo "<br>★delStartsWidth-4(\$result)<br>";
-        // var_dump($result);
         return $result;
     }
 }

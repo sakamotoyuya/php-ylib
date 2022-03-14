@@ -58,36 +58,29 @@ class Router
             $prefix_param_list = explode(":", $prefix_param);
             $prefix = $prefix_param_list[0];
             array_shift($prefix_param_list);
-            echo "<br>■\$prefix<br>";
-            var_dump($prefix);
-            // $prefix_list = explode("/", $prefix);
-            // echo "<br>■\$prefix_list<br>";
-            // var_dump($prefix_list);
-
+            // var_dump($prefix);
             // 先頭のURL部分のみを取る
             //前方一致判定
             if (preg_match("{^" . $prefix . "}", $request_url)) {
-                echo "<br>■\$request_url<br>";
-                var_dump($request_url);
+                // echo "<br>■\$request_url<br>";
+                // var_dump($request_url);
 
-                echo "<br>■\$prefix<br>";
-                var_dump($prefix);
-
+                // echo "<br>■\$prefix<br>";
+                // var_dump($prefix);
 
                 //プレフィクスを消してリクエストパラメータのみにする
                 $request_param = $this->ys->delStartsWith($request_url, $prefix);
-                echo "<br>■\$request_param-先頭プレフィクス削除<br>";
-                var_dump($request_param);
+                // echo "<br>■\$request_param-先頭プレフィクス削除<br>";
+                // var_dump($request_param);
                 $request_param = $this->ys->delEndsWith($request_param, "/");
-                echo "<br>■\$request_param-後方削除<br>";
-                var_dump($request_param);
+                // echo "<br>■\$request_param-後方削除<br>";
+                // var_dump($request_param);
 
                 // var_dump($request_param);
                 // var_dump(explode("/", $request_param));
                 $request_param_list = explode("/", $request_param);
-                echo "<br>■\$request_param_list<br>";
-                var_dump($request_param_list);
-
+                // echo "<br>■\$request_param_list<br>";
+                // var_dump($request_param_list);
 
                 //前方一致リストの後方パラメータ部分を分割して
                 //キー値を取得するurl部分をキー値にする
@@ -97,13 +90,12 @@ class Router
                     $pathparam[$key] = $data;
                 }
 
-                echo "<br>■\$prefix_param_list<br>";
-                var_dump($prefix_param_list);
-                echo "<br>■\$request_param_list<br>";
-                var_dump($request_param_list);
-                echo "<br>■\$pathparam<br>";
-                var_dump($pathparam);
-
+                // echo "<br>■\$prefix_param_list<br>";
+                // var_dump($prefix_param_list);
+                // echo "<br>■\$request_param_list<br>";
+                // var_dump($request_param_list);
+                // echo "<br>■\$pathparam<br>";
+                // var_dump($pathparam);
 
                 foreach ($this->prefixMatchRoutes[$prefix_param] as $class => $method) {
                     $controller = new ($this->namespace . $class);
@@ -118,8 +110,8 @@ class Router
         if (!isset($this->routes[$request_url])) {
             Logger::_print($request_urls, __METHOD__);
             var_dump($request_url);
-            echo "存在しない画面です。";
-            exit;
+            // echo "存在しない画面です。";
+            // exit;
             throw new Exception("存在しないURLです");
         }
 
