@@ -31,13 +31,13 @@ abstract class Controller
     /**
      * 指定したviewを表示する
      *
-     * @param string $url viewのurl
+     * @param string $filepath viewフォルダからのファイルパス
      * @return void
      */
-    public function view(string $url)
+    public function view(string $filepath)
     {
-        $url = View::getDir() . $url;
-        if (!file_exists($url)) {
+        $filepath = View::getDir() . $filepath;
+        if (!file_exists($filepath)) {
             throw new Exception("存在しないパスです");
         }
 
@@ -46,7 +46,7 @@ abstract class Controller
             ${$name} = $value;
         }
 
-        include($url);
+        include($filepath);
     }
 
     /**
