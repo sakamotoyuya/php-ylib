@@ -1,6 +1,6 @@
 <?php
 
-namespace YLibs\Utility;
+namespace YLibs\Common;
 
 use Exception;
 

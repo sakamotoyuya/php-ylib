@@ -19,6 +19,12 @@ final class ControllerTest extends TestCase
     {
         $this->target =  new class('target') extends Controller
         {
+            protected function get()
+            {
+            }
+            protected function post()
+            {
+            }
         };
     }
 

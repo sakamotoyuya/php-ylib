@@ -1,9 +1,10 @@
 <?php
 
-namespace YLibs\Utility;
+namespace YLibs\Test\Common;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
+use YLibs\Common\YString;
 
 class YStringTest extends TestCase
 {

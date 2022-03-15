@@ -4,7 +4,7 @@ namespace YLibs;
 
 use Exception;
 use YLibs\Logger;
-use YLibs\Utility\YString;
+use YLibs\Common\YString;
 
 // use Controller;
 
