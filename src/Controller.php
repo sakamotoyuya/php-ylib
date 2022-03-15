@@ -18,9 +18,9 @@ abstract class Controller
     private array $variables = [];
     private array $pathParameter = [];
 
-    abstract public function get();
+    abstract protected function get();
 
-    abstract public function post();
+    abstract protected function post();
 
     public function setPathParameter(array $parameter)
     {
