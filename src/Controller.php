@@ -90,4 +90,15 @@ abstract class Controller
             $this->post();
         }
     }
+
+    /**
+     * リダイレクト
+     *
+     * @param string $url リダイレクト先のURL
+     * @return void
+     */
+    protected function redirect(string $url)
+    {
+        header("Location:" . $url);
+    }
 }
