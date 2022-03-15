@@ -13,8 +13,8 @@ use YLibs\Utility\YString;
  */
 class Router
 {
-    private array $routes;
-    private array $prefixMatchRoutes;
+    private array $routes = [];
+    private array $prefixMatchRoutes = [];
     private string $namespace;
     private YString $ys;
 
