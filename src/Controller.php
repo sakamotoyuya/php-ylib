@@ -17,15 +17,27 @@ abstract class Controller
      */
     private $variables = [];
     private array $pathParameter = [];
+    private array $postParameter = [];
 
     public function setPathParameter(array $parameter)
     {
         $this->pathParameter = $parameter;
     }
 
+
     public function getPathParameter($key)
     {
         return $this->pathParameter[$key];
+    }
+
+    public function setPostParameter(string $key, $val)
+    {
+        $this->postParameter[$key] = $val;
+    }
+
+    public function getPostParameter($key)
+    {
+        return $this->postParameter;
     }
 
     /**
