@@ -15,29 +15,21 @@ abstract class Controller
      *
      * @var array
      */
-    private $variables = [];
+    private array $variables = [];
     private array $pathParameter = [];
-    private array $postParameter = [];
+
+    abstract public function get();
+
+    abstract public function post();
 
     public function setPathParameter(array $parameter)
     {
         $this->pathParameter = $parameter;
     }
 
-
     public function getPathParameter($key)
     {
         return $this->pathParameter[$key];
-    }
-
-    public function setPostParameter(string $key, $val)
-    {
-        $this->postParameter[$key] = $val;
-    }
-
-    public function getPostParameter($key)
-    {
-        return $this->postParameter;
     }
 
     /**
@@ -81,5 +73,21 @@ abstract class Controller
     public function getValiables()
     {
         return $this->variables;
+    }
+
+    /**
+     * indexを指定された場合は本メソッドを呼び出す
+     *
+     * @return void
+     */
+    public function index()
+    {
+        if ($_SERVER["REQUEST_METHOD"] != "POST") {
+            // get
+            $this->get();
+        } else {
+            // POST
+            $this->post();
+        }
     }
 }
