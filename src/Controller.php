@@ -22,12 +22,25 @@ abstract class Controller
 
     abstract protected function post();
 
-    public function setPathParameter(array $parameter)
+    /**
+     * パスパラメータ設定
+     *
+     * @param array $parameter
+     * @return self
+     */
+    public function setPathParameter(array $parameter): self
     {
         $this->pathParameter = $parameter;
+        return $this;
     }
 
-    public function getPathParameter($key)
+    /**
+     * パスパラメータ取得
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function getPathParameter(string $key): mixed
     {
         return $this->pathParameter[$key];
     }
@@ -42,7 +55,7 @@ abstract class Controller
     {
         $filepath = View::getDir() . $filepath;
         if (!file_exists($filepath)) {
-            throw new Exception("存在しないパスです");
+            throw new Exception("存在しないパスです", 404);
         }
 
         //viewへ値渡しする変数を作成する
@@ -58,11 +71,12 @@ abstract class Controller
      *
      * @param string $name 変数名
      * @param mixed $value 値
-     * @return void
+     * @return self
      */
-    public function set(String $name, $value)
+    public function set(String $name, $value): self
     {
         $this->variables[$name] = $value;
+        return $this;
     }
 
     /**
