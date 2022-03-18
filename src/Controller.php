@@ -26,12 +26,11 @@ abstract class Controller
      * パスパラメータ設定
      *
      * @param array $parameter
-     * @return self
+     * @return void
      */
-    public function setPathParameter(array $parameter): self
+    public function setPathParameter(array $parameter)
     {
         $this->pathParameter = $parameter;
-        return $this;
     }
 
     /**
@@ -71,12 +70,11 @@ abstract class Controller
      *
      * @param string $name 変数名
      * @param mixed $value 値
-     * @return self
+     * @return void
      */
-    public function set(String $name, $value): self
+    public function set(String $name, $value)
     {
         $this->variables[$name] = $value;
-        return $this;
     }
 
     /**

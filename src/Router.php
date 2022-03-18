@@ -127,11 +127,12 @@ class Router
      * @param string $url
      * @param string $class
      * @param string|null $method
-     * @return void
+     * @return self
      */
-    public function setMapping(string $url, string $class, ?string $method)
+    public function setMapping(string $url, string $class, ?string $method): self
     {
         $this->routes[$url] = [$class => $method];
+        return $this;
     }
 
     /**
@@ -140,10 +141,11 @@ class Router
      * @param string $url
      * @param string $class
      * @param string|null $method
-     * @return void
+     * @return self
      */
-    public function setPrefixMapping(string $url, string $class, ?string $method)
+    public function setPrefixMapping(string $url, string $class, ?string $method): self
     {
         $this->prefixMatchRoutes[$url] = [$class => $method];
+        return $this;
     }
 }
