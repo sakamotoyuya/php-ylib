@@ -34,10 +34,10 @@ class Session
      * Undocumented function
      *
      * @param string $key
-     * @return void
+     * @return mixed
      */
-    static public function get(string $key)
+    static public function get(string $key): mixed
     {
-        return $_SESSION[$key];
+        return @$_SESSION[$key];
     }
 }
