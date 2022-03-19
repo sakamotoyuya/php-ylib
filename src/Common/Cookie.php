@@ -16,4 +16,8 @@ class Cookie
     {
         return $_COOKIE[$key];
     }
+    static public function destroy($path = "/")
+    {
+        setcookie(session_name(), '', time() - 86400, $path);
+    }
 }

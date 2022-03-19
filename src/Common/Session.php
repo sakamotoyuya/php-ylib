@@ -15,6 +15,7 @@ class Session
 
     static public function destroy()
     {
+        $_SESSION = array();
         session_destroy();
     }
 
