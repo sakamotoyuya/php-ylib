@@ -28,6 +28,7 @@ class Session
      */
     static public function set(string $key, mixed $val)
     {
+        session_regenerate_id(true);
         $_SESSION[$key] = $val;
     }
 
