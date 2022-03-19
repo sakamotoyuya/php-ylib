@@ -18,11 +18,24 @@ class Session
         session_destroy();
     }
 
-    static public function set(string $key, string $val)
+    /**
+     * Undocumented function
+     *
+     * @param string $key
+     * @param mixed $val
+     * @return void
+     */
+    static public function set(string $key, mixed $val)
     {
         $_SESSION[$key] = $val;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param string $key
+     * @return void
+     */
     static public function get(string $key)
     {
         return $_SESSION[$key];
