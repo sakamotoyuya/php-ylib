@@ -32,6 +32,6 @@ class Utility
      */
     static public function getExpireDateTime(int $year): string
     {
-        return date('Y-m-d H:i:s', time() + $year * 3600 * 24 * 365);
+        return time() + $year * 3600 * 24 * 365;
     }
 }
