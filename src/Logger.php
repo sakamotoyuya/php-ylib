@@ -21,7 +21,7 @@ class Logger
         $msStr = str_pad($ms, 3, 0, STR_PAD_LEFT);
         //配列の場合は配列を文字列に変換する。
         $variable = is_array($variable) ? implode(" , ", $variable) : $variable;
-        $val = '[' . date("Y/m/d H:i:s") . $msStr . ']' . $arys[0]['file'] . '(' . $arys[0]['line'] . '):' . $method . '[' . $variable . ']';
+        $val = '[' . date("Y/m/d H:i:s") . $msStr . ']' . $arys[0]['file'] . '(' . $arys[0]['line'] . ')' . '[' . $method . ']:' . $variable;
 
         //ログファイルが存在しない場合
         if (!self::isExistLogFile()) {
