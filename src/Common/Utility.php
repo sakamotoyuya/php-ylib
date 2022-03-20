@@ -30,8 +30,11 @@ class Utility
      * @param int $year 年
      * @return string
      */
-    static public function getExpireDateTime(int $year = 1): string
+    static public function getExpireDateTime(bool $isToTimeFormat = false, int $year = 1): string
     {
+        if ($isToTimeFormat) {
+            return date('Y-m-d H:i:s', time() + $year * 3600 * 24 * 365);
+        }
         return time() + $year * 3600 * 24 * 365;
     }
 }
