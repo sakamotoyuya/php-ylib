@@ -18,7 +18,7 @@ class Cookie
     }
     static public function destroy($name = "", $path = "/")
     {
-        if ($name = "") {
+        if ($name == "") {
             $name = session_name();
         }
         setcookie($name, '', time() - 86400, $path);
