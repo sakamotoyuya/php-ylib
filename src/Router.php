@@ -108,7 +108,7 @@ class Router
 
         //完全一致判定
         if (!isset($this->routes[$request_url])) {
-            Logger::_print($request_urls, __METHOD__);
+            Logger::_print(__METHOD__, $request_urls);
             var_dump($request_url);
             // echo "存在しない画面です。";
             // exit;

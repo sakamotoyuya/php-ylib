@@ -9,7 +9,7 @@ final class LoggerTest extends TestCase implements protocol
 {
     public function testA()
     {
-        Logger::_print();
+        Logger::_print(__METHOD__);
         $this->assertSame("こんちわ", "こんちわ");
         // $obj = new Human();
         // $this->assertSame("こんにちわ",$obj->helloString());
