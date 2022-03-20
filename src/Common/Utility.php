@@ -30,7 +30,7 @@ class Utility
      * @param int $year 年
      * @return string
      */
-    static public function getExpireDateTime(int $year): string
+    static public function getExpireDateTime(int $year = 1): string
     {
         return time() + $year * 3600 * 24 * 365;
     }
