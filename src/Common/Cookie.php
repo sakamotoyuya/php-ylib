@@ -16,8 +16,11 @@ class Cookie
     {
         return $_COOKIE[$key];
     }
-    static public function destroy($path = "/")
+    static public function destroy($name = "", $path = "/")
     {
-        setcookie(session_name(), '', time() - 86400, $path);
+        if ($name = "") {
+            $name = session_name();
+        }
+        setcookie($name, '', time() - 86400, $path);
     }
 }
