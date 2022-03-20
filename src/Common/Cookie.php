@@ -12,9 +12,9 @@ class Cookie
     {
         setcookie($name, $value, $expires_or_options, $path, $domain, $secure, $httponly);
     }
-    static public function get(string $key)
+    static public function get(string $key): mixed
     {
-        return $_COOKIE[$key];
+        return @$_COOKIE[$key];
     }
     static public function destroy($name = "", $path = "/")
     {
