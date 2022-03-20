@@ -44,7 +44,7 @@ class Utility
      * @param int $year 年
      * @return int
      */
-    static public function getExpireDateTime(int $year = 1): int
+    static public function getExpireDateTime(int $year = 0): int
     {
         if ($year == 0) {
             return time();
