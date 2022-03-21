@@ -78,4 +78,16 @@ class Csrf
     {
         Session::set(self::getKey(), Utility::getRandomKey());
     }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    static public function tag()
+    {
+        $key = Csrf::getKey();
+        $csrftoken = Utility::h(Csrf::getToken());
+        echo '<input type="hidden" name="' . $key . '" value="' . $csrftoken . '" />';
+    }
 }

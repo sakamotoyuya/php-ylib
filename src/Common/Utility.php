@@ -51,4 +51,15 @@ class Utility
         }
         return time() + $year * 3600 * 24 * 365;
     }
+
+    /**
+     * 画面描画時にscriptとして認識させない文字に変換する
+     *
+     * @param [type] $org_str
+     * @return string
+     */
+    static public function h($org_str): string
+    {
+        return htmlspecialchars($org_str, ENT_QUOTES, "UTF-8");
+    }
 }
