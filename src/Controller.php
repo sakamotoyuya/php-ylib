@@ -3,6 +3,7 @@
 namespace YLibs;
 
 use Exception;
+use YLibs\Common\Csrf;
 
 /**
  * Controller
@@ -96,9 +97,11 @@ abstract class Controller
     {
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
             // get
+            Csrf::setToken();
             $this->get();
         } else {
             // POST
+            Csrf::check();
             $this->post();
         }
     }
