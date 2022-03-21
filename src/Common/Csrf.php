@@ -27,7 +27,7 @@ class Csrf
                 }
                 h1{
                     display:flex;
-                    justify-align:center;
+                    justify-content:center;
                     align-items:center;
                     color:red;
                     height:100vh;
