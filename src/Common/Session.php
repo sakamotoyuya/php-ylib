@@ -28,7 +28,7 @@ class Session
      */
     static public function set(string $key, mixed $val)
     {
-        session_regenerate_id(true);
+        self::regenerate();
         $_SESSION[$key] = $val;
     }
 
@@ -41,5 +41,15 @@ class Session
     static public function get(string $key): mixed
     {
         return @$_SESSION[$key];
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    static public function regenerate()
+    {
+        session_regenerate_id(true);
     }
 }

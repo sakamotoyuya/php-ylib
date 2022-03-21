@@ -4,6 +4,7 @@ namespace YLibs;
 
 use Exception;
 use YLibs\Common\Csrf;
+use YLibs\Common\Session;
 
 /**
  * Controller
@@ -95,6 +96,8 @@ abstract class Controller
      */
     public function index()
     {
+        //アクセスされる都度セッションを再生成する
+        Session::regenerate();
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
             // get
             Csrf::setToken();
