@@ -15,13 +15,20 @@ class Logger
         //  トレース配列を取得。
         $arys = $e->getTrace();
 
+        $function = $arys[1]["function"];
+        $class = $arys[1]["class"];
+        $type = $arys[1]["type"];
+        $line = $arys[1]["line"];
+        $file = $arys[0]["file"];
+
         $now = microtime(true);
         # 小数点以下から、上3桁をミリ秒として取得する
         $ms = (int)(($now - (int)$now) * 1000);
         $msStr = str_pad($ms, 3, 0, STR_PAD_LEFT);
         //配列の場合は配列を文字列に変換する。
         $variable = is_array($variable) ? implode(" , ", $variable) : $variable;
-        $val = '[' . date("Y/m/d H:i:s") . $msStr . ']' . $arys[0]['file'] . '(' . $arys[0]['line'] . ')' . '[' . $method . ']:' . $variable;
+        // $val = '[' . date("Y/m/d H:i:s") . $msStr . ']' . $arys[0]['file'] . '(' . $arys[0]['line'] . ')' . '[' . $method . ']:' . $variable;
+        $val = '[' . date("Y/m/d H:i:s") . $msStr . ']' . $arys[0]['file'] . '(' . $arys[0]['line'] . ')' . '[' . $arys[1]["class"] . $arys[1]["type"] . $arys[1]["function"] . ']' . $variable;
 
         //ログファイルが存在しない場合
         if (!self::isExistLogFile()) {
