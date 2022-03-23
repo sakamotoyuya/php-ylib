@@ -16,14 +16,14 @@ final class LoggerTest extends TestCase implements protocol
         // $this->assertSame("こんにちわ",$obj->helloString());
     }
 
-    /**
-     * @test
-     */
-    function ログテスト()
-    {
-        Logger::_print("ロガーテスト");
-        // $this->a();
-    }
+    // /**
+    //  * @test
+    //  */
+    // function ログテスト()
+    // {
+    //     Logger::_print("ロガーテスト");
+    //     // $this->a();
+    // }
 
     function a()
     {
