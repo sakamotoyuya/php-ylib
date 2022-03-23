@@ -31,7 +31,8 @@ class Logger
         $msStr = str_pad($ms, 3, 0, STR_PAD_LEFT);
 
         //ログのフォーマット
-        $format = "[${date}${msStr}]$file($line)【${class}${type}${function}】";
+        // $format = "[${date}${msStr}]$file($line)【${class}${type}${function}】";
+        $format = "[${date}${msStr}]$file($line)【${type}${function}】";
 
         //配列の場合は配列を文字列に変換する。
         $variable = is_array($variable) ? implode(" , ", $variable) : $variable;
