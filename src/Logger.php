@@ -6,7 +6,7 @@ use Exception;
 
 class Logger
 {
-    public static function _print($method = "", $variable = "")
+    public static function _print($variable = "")
     {
 
         //ログファイルへの書き込み処理
@@ -36,7 +36,6 @@ class Logger
 
         //配列の場合は配列を文字列に変換する。
         $variable = is_array($variable) ? implode(" , ", $variable) : $variable;
-        // $val = '[' . date("Y/m/d H:i:s") . $msStr . ']' . $arys[0]['file'] . '(' . $arys[0]['line'] . ')' . '[' . $method . ']:' . $variable;
         // $val = '[' . date("Y/m/d H:i:s") . $msStr . ']' . $format . $variable;
         $val = $format . $variable;
 
