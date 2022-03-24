@@ -60,8 +60,11 @@ class Router
             array_shift($prefix_param_list);
             // var_dump($prefix);
             // 先頭のURL部分のみを取る
-            //前方一致判定
-            if (preg_match("{^" . $prefix . "}", $request_url)) {
+            // パス区切りの数が同じ && 前方一致判定
+            if (
+                (count(explode("/", $request_url)) == count(explode("/", $prefix_param)))
+                && preg_match("{^" . $prefix . "}", $request_url)
+            ) {
                 // echo "<br>■\$request_url<br>";
                 // var_dump($request_url);
 
