@@ -110,6 +110,27 @@ abstract class Controller
     }
 
     /**
+     * POST判定※CSRF対策含む
+     *
+     * @return bool
+     */
+    public function isPOST()
+    {
+        //アクセスされる都度セッションを再生成する
+        Session::regenerate();
+        if ($_SERVER["REQUEST_METHOD"] != "POST") {
+            // get
+            Csrf::setToken();
+            return false;
+        } else {
+            // POST
+            Csrf::check();
+            return true;
+        }
+    }
+
+
+    /**
      * リダイレクト
      *
      * @param string $url リダイレクト先のURL
