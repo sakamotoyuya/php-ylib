@@ -55,4 +55,19 @@ class YString
 
         return $result;
     }
+
+    /**
+     * 文字列が整数形式[0～9]のみか判定
+     *
+     * @param string $str
+     * @return bool
+     */
+    static function isIntager(string $str): bool
+    {
+        if (preg_match("/^[0-9]+$/", $str)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
