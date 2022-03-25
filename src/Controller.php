@@ -43,7 +43,7 @@ abstract class Controller
      */
     public function getPathParameter(string $key): mixed
     {
-        return $this->pathParameter[$key];
+        return @$this->pathParameter[$key];
     }
 
     /**
