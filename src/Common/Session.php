@@ -28,7 +28,10 @@ class Session
      */
     static public function set(string $key, mixed $val)
     {
-        self::regenerate();
+        //アクセスされる都度セッションを再生成する
+        //以下が連続で呼び出されるとセッションが消えてしまうため
+        //セッションハイジャック対策はログインしたときのみにする。
+        // self::regenerate();
         $_SESSION[$key] = $val;
     }
 
