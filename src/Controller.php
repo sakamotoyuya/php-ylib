@@ -121,7 +121,7 @@ abstract class Controller
         //アクセスされる都度セッションを再生成する
         //以下が連続で呼び出されるとセッションが消えてしまうため
         //セッションハイジャック対策はログインしたときのみにする。
-        Session::regenerate();
+        // Session::regenerate();
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
             // get
             Csrf::setToken();
