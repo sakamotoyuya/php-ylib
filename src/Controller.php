@@ -145,4 +145,16 @@ abstract class Controller
         header("Location:" . $url);
         exit;
     }
+
+    /**
+     * ホストルートから相対指定パスの指定から
+     * 絶対指定のURLを取得する
+     *
+     * @param string $filePath ルートからの相対パスを指定する
+     * @return void
+     */
+    public function fullPath(string $filePath = "")
+    {
+        return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/" . $filePath;
+    }
 }
