@@ -151,9 +151,9 @@ abstract class Controller
      * 絶対指定のURLを取得する
      *
      * @param string $filePath ルートからの相対パスを指定する
-     * @return void
+     * @return string 絶対パス
      */
-    public function fullPath(string $filePath = "")
+    public function fullPath(string $filePath = ""): string
     {
         return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/" . $filePath;
     }
