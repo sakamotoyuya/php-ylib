@@ -62,4 +62,16 @@ class Utility
     {
         return htmlspecialchars($org_str, ENT_QUOTES, "UTF-8");
     }
+
+    /**
+     * ホストルートから相対指定パスの指定から
+     * 絶対指定のURLを取得する
+     *
+     * @param string $filePath ルートからの相対パスを指定する
+     * @return void
+     */
+    static public function fullPath(string $filePath = "")
+    {
+        return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/" . $filePath;
+    }
 }
