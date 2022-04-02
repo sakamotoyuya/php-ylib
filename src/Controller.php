@@ -155,6 +155,10 @@ abstract class Controller
      */
     public function fullPath(string $filePath = ""): string
     {
-        return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/" . $filePath;
+        //指定文字の先頭が/で始まっていない場合は/を先頭に付与する
+        if (!preg_match('{^/}', $filePath)) {
+            $filePath = "/" . $filePath;
+        }
+        return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $filePath;
     }
 }
