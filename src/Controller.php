@@ -68,6 +68,27 @@ abstract class Controller
     }
 
     /**
+     * 指定したscriptを表示する
+     *
+     * @param string $filepath jsフォルダからのファイルパス
+     * @return void
+     */
+    public function script(string $filepath)
+    {
+        $filepath = Script::getDir() . $filepath;
+        if (!file_exists($filepath)) {
+            throw new Exception("存在しないパスです", 404);
+        }
+
+        //viewへ値渡しする変数を作成する
+        foreach ($this->variables as $name => $value) {
+            ${$name} = $value;
+        }
+
+        include($filepath);
+    }
+
+    /**
      * viewへ値しするための変数の設定を行う。
      *
      * @param string $name 変数名
