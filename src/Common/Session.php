@@ -26,7 +26,7 @@ class Session
      * @param mixed $val
      * @return void
      */
-    static public function set(string $key, mixed $val)
+    static public function set(string $key, $val)
     {
         //アクセスされる都度セッションを再生成する
         //以下が連続で呼び出されるとセッションが消えてしまうため
@@ -41,7 +41,7 @@ class Session
      * @param string $key
      * @return mixed
      */
-    static public function get(string $key): mixed
+    static public function get(string $key)
     {
         return @$_SESSION[$key];
     }

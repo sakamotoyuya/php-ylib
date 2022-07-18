@@ -12,7 +12,7 @@ class Cookie
     {
         setcookie($name, $value, $expires_or_options, $path, $domain, $secure, $httponly);
     }
-    static public function get(string $key): mixed
+    static public function get(string $key)
     {
         return @$_COOKIE[$key];
     }

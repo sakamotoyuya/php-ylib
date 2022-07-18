@@ -41,7 +41,7 @@ abstract class Controller
      * @param string $key
      * @return mixed
      */
-    public function getPathParameter(string $key): mixed
+    public function getPathParameter(string $key)
     {
         return @$this->pathParameter[$key];
     }
