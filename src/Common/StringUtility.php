@@ -25,4 +25,20 @@ class StringUtility
         }
         return $falseValue;
     }
+
+    /**
+     * スネークケースから先頭大文字ケースに変換して返却する
+     *
+     * @param string $target
+     * @return string
+     */
+    static function snakeToCamel(string $target): string
+    {
+        $arr = explode("_", $target);
+        $result = "";
+        foreach ($arr as $val) {
+            $result = $result . ucfirst($val);
+        }
+        return $result;
+    }
 }
