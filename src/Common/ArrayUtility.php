@@ -27,4 +27,19 @@ class ArrayUtility
 
         return $result;
     }
+
+    /**
+     * 配列にキーを指定した際の値を返却する。存在しない場合はnullを返却する。
+     *
+     * @param string $key
+     * @param array $arr
+     * @return mixed
+     */
+    static public function getArrayValue(string $key, array $arr): mixed
+    {
+        if (array_key_exists($key, $arr)) {
+            return $arr[$key];
+        }
+        return null;
+    }
 }
