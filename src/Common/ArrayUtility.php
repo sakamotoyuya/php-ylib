@@ -33,9 +33,9 @@ class ArrayUtility
      *
      * @param string $key
      * @param array $arr
-     * @return mixed
+     * @return ?string
      */
-    static public function getArrayValue(string $key, array $arr): mixed
+    static public function getArrayValue(string $key, array $arr): ?string
     {
         if (array_key_exists($key, $arr)) {
             return $arr[$key];
