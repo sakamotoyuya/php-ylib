@@ -60,6 +60,9 @@ class Utility
      */
     static public function h($org_str): string
     {
+        if (is_null($org_str)) {
+            $org_str = "";
+        }
         return htmlspecialchars($org_str, ENT_QUOTES, "UTF-8");
     }
 

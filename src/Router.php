@@ -101,7 +101,9 @@ class Router
                 // var_dump($pathparam);
 
                 foreach ($this->prefixMatchRoutes[$prefix_param] as $class => $method) {
-                    $controller = new ($this->namespace . $class);
+                    $class = $this->namespace . $class;
+                    $controller = new $class;
+                    // $controller = new ($this->namespace . $class);
                     $controller->setPathParameter($pathparam);
                     $controller->$method();
                 }
@@ -119,7 +121,9 @@ class Router
         }
 
         foreach ($this->routes[$request_url] as $class => $method) {
-            $controller = new ($this->namespace . $class);
+            $class = $this->namespace . $class;
+            $controller = new $class;
+            // $controller = new ($this->namespace . $class);
             $controller->$method();
         }
     }
