@@ -46,7 +46,7 @@ class Csrf
     /**
      * Get the value of key
      */
-    static private function getKey()
+    static public function getKey()
     {
         return self::$key;
     }
@@ -64,7 +64,7 @@ class Csrf
     /**
      * Get the value of token
      */
-    static private function getToken()
+    static public function getToken()
     {
         return @Session::get(Csrf::getKey());
     }
