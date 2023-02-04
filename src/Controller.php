@@ -60,9 +60,17 @@ abstract class Controller
         }
 
         //viewへ値渡しする変数を作成する
-        foreach ($this->variables as $name => $value) {
-            ${$name} = $value;
+        foreach ($this->variables as $ylibs_variable_name => $ylibs_variable_value) {
+            ${$ylibs_variable_name} = $ylibs_variable_value;
         }
+        /*
+        $nameと$valueの変数名を使っていたが、$nameと$valueを
+        変数名として使いたいときに値が上書きされてしまうので
+        名前を使わない名前に変更  
+        [$ylibs_variable_nameと$ylibs_variable_value]の変数名は使わないこと。
+        */
+        unset($ylibs_variable_name);
+        unset($ylibs_variable_value);
 
         include($filepath);
     }
@@ -80,10 +88,18 @@ abstract class Controller
             throw new Exception("存在しないパスです", 404);
         }
 
-        //viewへ値渡しする変数を作成する
-        foreach ($this->variables as $name => $value) {
-            ${$name} = $value;
+        //scriptへ値渡しする変数を作成する
+        foreach ($this->variables as $ylibs_variable_name => $ylibs_variable_value) {
+            ${$ylibs_variable_name} = $ylibs_variable_value;
         }
+        /*
+        $nameと$valueの変数名を使っていたが、$nameと$valueを
+        変数名として使いたいときに値が上書きされてしまうので
+        名前を使わない名前に変更  
+        [$ylibs_variable_nameと$ylibs_variable_value]の変数名は使わないこと。
+        */
+        unset($ylibs_variable_name);
+        unset($ylibs_variable_value);
 
         include($filepath);
     }
