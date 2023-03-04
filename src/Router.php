@@ -30,7 +30,7 @@ class Router
      * @return void
      * @throws Exception 
      */
-    public function run()
+    public function run($role)
     {
         $request_url = $_SERVER["REQUEST_URI"];
         //パラメータとurlの分解の処理
@@ -100,9 +100,12 @@ class Router
                 // echo "<br>■\$pathparam<br>";
                 // var_dump($pathparam);
 
-                foreach ($this->prefixMatchRoutes[$prefix_param] as $class => $method) {
+                foreach ($this->prefixMatchRoutes[$prefix_param]["class"] as $class => $method) {
                     $class = $this->namespace . $class;
                     $controller = new $class;
+                    if (!$this->isAuthRole($this->prefixMatchRoutes[$prefix_param]["role"], $role)) {
+                        throw new Exception("URLが見つかりません。", 404);
+                    }
                     // $controller = new ($this->namespace . $class);
                     $controller->setPathParameter($pathparam);
                     $controller->$method();
@@ -120,9 +123,12 @@ class Router
             throw new Exception("存在しないURLです");
         }
 
-        foreach ($this->routes[$request_url] as $class => $method) {
+        foreach ($this->routes[$request_url]["class"] as $class => $method) {
             $class = $this->namespace . $class;
             $controller = new $class;
+            if (!$this->isAuthRole($this->routes[$request_url]["role"], $role)) {
+                throw new Exception("URLが見つかりません。", 404);
+            }
             // $controller = new ($this->namespace . $class);
             $controller->$method();
         }
@@ -136,9 +142,12 @@ class Router
      * @param string|null $method
      * @return self
      */
-    public function setMapping(string $url, string $class, ?string $method): self
+    public function setMapping(string $url, string $class, ?string $method, int $role = 0): self
     {
-        $this->routes[$url] = [$class => $method];
+        $this->routes[$url] = [
+            "class" => [$class => $method],
+            "role" => $role
+        ];
         return $this;
     }
 
@@ -150,9 +159,32 @@ class Router
      * @param string|null $method
      * @return self
      */
-    public function setPrefixMapping(string $url, string $class, ?string $method): self
+    public function setPrefixMapping(string $url, string $class, ?string $method, int $role = 0): self
     {
-        $this->prefixMatchRoutes[$url] = [$class => $method];
+        $this->prefixMatchRoutes[$url] = [
+            "class" => [$class => $method],
+            "role" => $role
+        ];
         return $this;
+    }
+
+    /**
+     * 権限チェック
+     *
+     * @param int $role
+     * @param int $runRole
+     * @return bool
+     */
+    private function isAuthRole(int $role, int $runRole): bool
+    {
+        if ($role == 0) {
+            return true;
+        }
+
+        if ($role != $runRole) {
+            return false;
+        }
+
+        return true;
     }
 }
