@@ -11,7 +11,9 @@
             "email": "freetairu@yahoo.co.jp"
         }
     ],
-    "require": {},
+    "require": {
+        "php-di/php-di": "^7.0"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9"
     },
