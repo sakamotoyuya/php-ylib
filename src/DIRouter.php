@@ -31,7 +31,7 @@ class DIRouter
      * @return void
      * @throws Exception 
      */
-    public function run($role)
+    public function run($runRole)
     {
         $request_url = $_SERVER["REQUEST_URI"];
         //パラメータとurlの分解の処理
@@ -83,7 +83,7 @@ class DIRouter
 
                 foreach ($this->prefixMatchRoutes[$prefix_param]["class"] as $class => $method) {
                     $controller = $this->getController($class);
-                    if (!$this->isAuthRole($this->prefixMatchRoutes[$prefix_param]["role"], $role)) {
+                    if (!$this->isAccessPermitted($runRole, $this->prefixMatchRoutes[$prefix_param]["authorizedRoles"])) {
                         throw new Exception("URLが見つかりません。", 404);
                     }
                     $controller->setPathParameter($pathparam);
@@ -101,7 +101,7 @@ class DIRouter
 
         foreach ($this->routes[$request_url]["class"] as $class => $method) {
             $controller = $this->getController($class);
-            if (!$this->isAuthRole($this->routes[$request_url]["role"], $role)) {
+            if (!$this->isAccessPermitted($runRole, $this->routes[$request_url]["authorizedRoles"])) {
                 throw new Exception("URLが見つかりません。", 404);
             }
             $controller->$method();
@@ -116,11 +116,11 @@ class DIRouter
      * @param string|null $method
      * @return self
      */
-    public function setMapping(string $url, string $class, ?string $method, int $role = 0): self
+    public function setMapping(string $url, string $class, ?string $method, array $authorizedRoles = []): self
     {
         $this->routes[$url] = [
             "class" => [$class => $method],
-            "role" => $role
+            "authorizedRoles" => $authorizedRoles
         ];
         return $this;
     }
@@ -133,33 +133,40 @@ class DIRouter
      * @param string|null $method
      * @return self
      */
-    public function setPrefixMapping(string $url, string $class, ?string $method, int $role = 0): self
+    public function setPrefixMapping(string $url, string $class, ?string $method, array $authorizedRoles = []): self
     {
         $this->prefixMatchRoutes[$url] = [
             "class" => [$class => $method],
-            "role" => $role
+            "authorizedRoles" => $authorizedRoles
         ];
         return $this;
     }
 
     /**
-     * 権限チェック
+     * アクセス権限があるかどうか
      *
      * @param int $role
-     * @param int $runRole
+     * @param ?int $runRole
      * @return bool
      */
-    private function isAuthRole(int $role, int $runRole): bool
+    private function isAccessPermitted(?int $runRole, array $authorizedRoles = []): bool
     {
-        if ($role == 0) {
+        if (count($authorizedRoles) == 0) {
+            //認証情報が無くても表示できる画面の場合は、全てのユーザーのアクセスを許可する。
             return true;
         }
 
-        if ($role != $runRole) {
-            return false;
+        if (is_null($runRole)) {
+            throw new Exception("認証情報がありません", 404);
         }
 
-        return true;
+        foreach ($authorizedRoles as $authorizedRole) {
+            if ($authorizedRole == $runRole) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function getController($class)
