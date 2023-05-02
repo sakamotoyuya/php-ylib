@@ -29,7 +29,7 @@ class DIRouter
      * ルート振り分け
      *
      * @return void
-     * @throws Exception 
+     * @throws Exception|RoutingRoleException
      */
     public function run($runRole)
     {
@@ -102,7 +102,7 @@ class DIRouter
         foreach ($this->routes[$request_url]["class"] as $class => $method) {
             $controller = $this->getController($class);
             if (!$this->isAccessPermitted($runRole, $this->routes[$request_url]["authorizedRoles"])) {
-                throw new Exception("URLが見つかりません。", 404);
+                throw (new RoutingRoleException("アクセス権限がありません", 404))->setRole($runRole);
             }
             $controller->$method();
         }
@@ -154,10 +154,6 @@ class DIRouter
         if (count($authorizedRoles) == 0) {
             //認証情報が無くても表示できる画面の場合は、全てのユーザーのアクセスを許可する。
             return true;
-        }
-
-        if (is_null($runRole)) {
-            throw new Exception("認証情報がありません", 404);
         }
 
         foreach ($authorizedRoles as $authorizedRole) {
