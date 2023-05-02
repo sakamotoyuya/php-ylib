@@ -8,7 +8,7 @@ use Throwable;
 /**
  * ルーティング用の例外クラスを定義
  */
-class RoutingRoleException extends Exception
+class AccessPermissionException extends Exception
 {
     /**
      * リクエストURI

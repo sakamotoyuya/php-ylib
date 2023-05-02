@@ -102,7 +102,7 @@ class DIRouter
         foreach ($this->routes[$request_url]["class"] as $class => $method) {
             $controller = $this->getController($class);
             if (!$this->isAccessPermitted($runRole, $this->routes[$request_url]["authorizedRoles"])) {
-                throw (new RoutingRoleException("アクセス権限がありません", 404))->setRole($runRole);
+                throw (new AccessPermissionException("アクセス権限がありません", 404))->setRole($runRole);
             }
             $controller->$method();
         }
