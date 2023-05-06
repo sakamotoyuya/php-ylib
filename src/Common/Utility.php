@@ -71,9 +71,9 @@ class Utility
      * 絶対指定のURLを取得する
      *
      * @param string $filePath ルートからの相対パスを指定する
-     * @return void
+     * @return string
      */
-    static public function fullPath(string $filePath = "")
+    static public function fullPath(string $filePath = ""): string
     {
         return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/" . $filePath;
     }
@@ -83,9 +83,9 @@ class Utility
      * ※リファラーがないときはデフォルトリンクを取得する
      *
      * @param string $defaultLink
-     * @return void
+     * @return string
      */
-    static public function getBackLink(string $defaultLink = "/")
+    static public function getBackLink(string $defaultLink = "/"): string
     {
         return is_null(@$_SERVER['HTTP_REFERER']) ? $defaultLink : $_SERVER['HTTP_REFERER'];
     }
