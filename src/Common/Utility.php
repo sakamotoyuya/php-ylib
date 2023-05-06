@@ -77,4 +77,16 @@ class Utility
     {
         return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/" . $filePath;
     }
+
+    /**
+     * 戻るリンクを取得する
+     * ※リファラーがないときはデフォルトリンクを取得する
+     *
+     * @param string $defaultLink
+     * @return void
+     */
+    static public function getBackLink(string $defaultLink = "/")
+    {
+        return is_null(@$_SERVER['HTTP_REFERER']) ? $defaultLink : $_SERVER['HTTP_REFERER'];
+    }
 }
