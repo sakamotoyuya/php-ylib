@@ -53,6 +53,20 @@ class Utility
     }
 
     /**
+     * 本日から指定分数後の有効期限日時を取得する
+     *
+     * @param int $minutes 分
+     * @return int
+     */
+    static public function getExpireDateTimeByMinutes(int $minutes = 0): int
+    {
+        if ($minutes == 0) {
+            return time();
+        }
+        return time() + $minutes * 60;
+    }
+
+    /**
      * 画面描画時にscriptとして認識させない文字に変換する
      *
      * @param [type] $org_str
